@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F85EDF0F2CA5B01100B55FE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF0E2CA5B01100B55FE0 /* AppDelegate.swift */; };
 		F85EDF112CA5B01100B55FE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF102CA5B01100B55FE0 /* SceneDelegate.swift */; };
-		F85EDF132CA5B01100B55FE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF122CA5B01100B55FE0 /* ViewController.swift */; };
 		F85EDF162CA5B01100B55FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85EDF142CA5B01100B55FE0 /* Main.storyboard */; };
 		F85EDF192CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF172CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodeld */; };
 		F85EDF1B2CA5B01300B55FE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F85EDF1A2CA5B01300B55FE0 /* Assets.xcassets */; };
@@ -50,7 +49,6 @@
 		F85EDF0B2CA5B01100B55FE0 /* banquemisr.challenge05.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = banquemisr.challenge05.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F85EDF0E2CA5B01100B55FE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F85EDF102CA5B01100B55FE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F85EDF122CA5B01100B55FE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F85EDF152CA5B01100B55FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F85EDF182CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = banquemisr_challenge05.xcdatamodel; sourceTree = "<group>"; };
 		F85EDF1A2CA5B01300B55FE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			children = (
 				F85EDF1C2CA5B01300B55FE0 /* LaunchScreen.storyboard */,
 				F85EDF142CA5B01100B55FE0 /* Main.storyboard */,
-				F85EDF122CA5B01100B55FE0 /* ViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				F85EDF522CA5B7F700B55FE0 /* upcomingViewModel.swift in Sources */,
 				F85EDF632CA5B92000B55FE0 /* Network.swift in Sources */,
 				F85EDF562CA5B82B00B55FE0 /* nowplayingViewController.swift in Sources */,
-				F85EDF132CA5B01100B55FE0 /* ViewController.swift in Sources */,
 				F85EDF612CA5B90F00B55FE0 /* APIManger.swift in Sources */,
 				F85EDF192CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodeld in Sources */,
 				F85EDF4C2CA5B7A200B55FE0 /* popularViewController.swift in Sources */,
