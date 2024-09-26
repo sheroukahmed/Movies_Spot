@@ -26,6 +26,7 @@
 		F85EDF632CA5B92000B55FE0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF622CA5B92000B55FE0 /* Network.swift */; };
 		F85EDF682CA5BD7F00B55FE0 /* movieDetailesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF672CA5BD7F00B55FE0 /* movieDetailesViewModel.swift */; };
 		F85EDF6A2CA5BD9B00B55FE0 /* MovieDetailesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF692CA5BD9B00B55FE0 /* MovieDetailesViewController.swift */; };
+		F85EDF6C2CA5F26D00B55FE0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF6B2CA5F26D00B55FE0 /* NetworkProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		F85EDF622CA5B92000B55FE0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F85EDF672CA5BD7F00B55FE0 /* movieDetailesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieDetailesViewModel.swift; sourceTree = "<group>"; };
 		F85EDF692CA5BD9B00B55FE0 /* MovieDetailesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailesViewController.swift; sourceTree = "<group>"; };
+		F85EDF6B2CA5F26D00B55FE0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F85EDF622CA5B92000B55FE0 /* Network.swift */,
+				F85EDF6B2CA5F26D00B55FE0 /* NetworkProtocol.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				F85EDF0F2CA5B01100B55FE0 /* AppDelegate.swift in Sources */,
 				F85EDF682CA5BD7F00B55FE0 /* movieDetailesViewModel.swift in Sources */,
 				F85EDF6A2CA5BD9B00B55FE0 /* MovieDetailesViewController.swift in Sources */,
+				F85EDF6C2CA5F26D00B55FE0 /* NetworkProtocol.swift in Sources */,
 				F85EDF502CA5B7E100B55FE0 /* upcomingViewController.swift in Sources */,
 				F85EDF4E2CA5B7C600B55FE0 /* popularViewModel.swift in Sources */,
 				F85EDF112CA5B01100B55FE0 /* SceneDelegate.swift in Sources */,
