@@ -27,6 +27,9 @@
 		F85EDF682CA5BD7F00B55FE0 /* movieDetailesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF672CA5BD7F00B55FE0 /* movieDetailesViewModel.swift */; };
 		F85EDF6A2CA5BD9B00B55FE0 /* MovieDetailesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF692CA5BD9B00B55FE0 /* MovieDetailesViewController.swift */; };
 		F85EDF6C2CA5F26D00B55FE0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF6B2CA5F26D00B55FE0 /* NetworkProtocol.swift */; };
+		F85EDF6F2CA5FC8100B55FE0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF6D2CA5FC8100B55FE0 /* CustomTableViewCell.swift */; };
+		F85EDF702CA5FC8100B55FE0 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F85EDF6E2CA5FC8100B55FE0 /* CustomTableViewCell.xib */; };
+		F85EDF732CA6337400B55FE0 /* NowPlayingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF722CA6337400B55FE0 /* NowPlayingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,9 @@
 		F85EDF672CA5BD7F00B55FE0 /* movieDetailesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieDetailesViewModel.swift; sourceTree = "<group>"; };
 		F85EDF692CA5BD9B00B55FE0 /* MovieDetailesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailesViewController.swift; sourceTree = "<group>"; };
 		F85EDF6B2CA5F26D00B55FE0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		F85EDF6D2CA5FC8100B55FE0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		F85EDF6E2CA5FC8100B55FE0 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		F85EDF722CA6337400B55FE0 /* NowPlayingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,10 +167,10 @@
 		F85EDF442CA5B3D300B55FE0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F85EDF482CA5B70200B55FE0 /* Now Playing */,
 				F85EDF642CA5B96E00B55FE0 /* Movie Detailes */,
 				F85EDF4A2CA5B77100B55FE0 /* Popular */,
 				F85EDF492CA5B76500B55FE0 /* Upcoming */,
-				F85EDF482CA5B70200B55FE0 /* Now Playing */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -191,6 +197,8 @@
 			children = (
 				F85EDF1C2CA5B01300B55FE0 /* LaunchScreen.storyboard */,
 				F85EDF142CA5B01100B55FE0 /* Main.storyboard */,
+				F85EDF6D2CA5FC8100B55FE0 /* CustomTableViewCell.swift */,
+				F85EDF6E2CA5FC8100B55FE0 /* CustomTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		F85EDF482CA5B70200B55FE0 /* Now Playing */ = {
 			isa = PBXGroup;
 			children = (
+				F85EDF712CA6335600B55FE0 /* Model */,
 				F85EDF5D2CA5B8B500B55FE0 /* View Model */,
 				F85EDF5C2CA5B8AB00B55FE0 /* View */,
 			);
@@ -320,6 +329,14 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		F85EDF712CA6335600B55FE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F85EDF722CA6337400B55FE0 /* NowPlayingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,6 +443,7 @@
 			files = (
 				F85EDF1E2CA5B01300B55FE0 /* LaunchScreen.storyboard in Resources */,
 				F85EDF1B2CA5B01300B55FE0 /* Assets.xcassets in Resources */,
+				F85EDF702CA5FC8100B55FE0 /* CustomTableViewCell.xib in Resources */,
 				F85EDF162CA5B01100B55FE0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,8 +475,10 @@
 				F85EDF562CA5B82B00B55FE0 /* nowplayingViewController.swift in Sources */,
 				F85EDF612CA5B90F00B55FE0 /* APIManger.swift in Sources */,
 				F85EDF192CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodeld in Sources */,
+				F85EDF6F2CA5FC8100B55FE0 /* CustomTableViewCell.swift in Sources */,
 				F85EDF4C2CA5B7A200B55FE0 /* popularViewController.swift in Sources */,
 				F85EDF0F2CA5B01100B55FE0 /* AppDelegate.swift in Sources */,
+				F85EDF732CA6337400B55FE0 /* NowPlayingModel.swift in Sources */,
 				F85EDF682CA5BD7F00B55FE0 /* movieDetailesViewModel.swift in Sources */,
 				F85EDF6A2CA5BD9B00B55FE0 /* MovieDetailesViewController.swift in Sources */,
 				F85EDF6C2CA5F26D00B55FE0 /* NetworkProtocol.swift in Sources */,

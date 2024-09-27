@@ -15,10 +15,36 @@
                     <view key="view" contentMode="scaleToFill" id="uok-Qm-S3A">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sjs-4e-38m">
+                                <rect key="frame" x="16" y="97" width="361" height="660"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="153" id="dLt-9G-bXM">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="153"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dLt-9G-bXM" id="XHe-pc-smd">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="153"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fWy-lw-6Fq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fWy-lw-6Fq" firstAttribute="trailing" secondItem="Sjs-4e-38m" secondAttribute="trailing" constant="16" id="3aK-VA-aqz"/>
+                            <constraint firstItem="Sjs-4e-38m" firstAttribute="top" secondItem="fWy-lw-6Fq" secondAttribute="top" constant="38" id="4Hk-wN-0wd"/>
+                            <constraint firstItem="Sjs-4e-38m" firstAttribute="centerX" secondItem="fWy-lw-6Fq" secondAttribute="centerX" id="6ii-w9-00g"/>
+                            <constraint firstItem="Sjs-4e-38m" firstAttribute="leading" secondItem="fWy-lw-6Fq" secondAttribute="leading" constant="16" id="OzB-5J-zfC"/>
+                            <constraint firstItem="fWy-lw-6Fq" firstAttribute="bottom" secondItem="Sjs-4e-38m" secondAttribute="bottom" constant="12" id="sei-7f-MbM"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="tv" selectedImage="tv" id="Hld-P0-eqP"/>
+                    <connections>
+                        <outlet property="moviestable" destination="Sjs-4e-38m" id="yma-M6-bvB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XE2-8n-Ibz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,6 +90,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Gxv-La-NNO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ceS-Zv-AfD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
