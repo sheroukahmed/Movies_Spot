@@ -7,23 +7,57 @@
 
 import UIKit
 
-class popularViewController: UIViewController {
+class popularViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var moviestable: UITableView!
+    
+    var popularVM : PopularViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        popularVM = PopularViewModel()
+        
+        moviestable.dataSource = self
+        moviestable.delegate = self
+        
+        let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        moviestable.register(nib, forCellReuseIdentifier: "moviecell")
+        
+        popularVM?.loadData()
+        popularVM?.bindResultToViewController = {
+            
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return popularVM?.moviesResult?.count ?? 0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = moviestable.dequeueReusableCell(withIdentifier: "moviecell", for: indexPath) as? CustomTableViewCell else {
+                    return UITableViewCell()
+                }
+        
+        cell.movietitle.text = popularVM?.moviesResult?[indexPath.row].title
+        cell.movielang.text = popularVM?.moviesResult?[indexPath.row].original_language
+        if let releaseDate = popularVM?.moviesResult?[indexPath.row].release_date {
+            let year = String(releaseDate.prefix(4))
+            cell.movieyear.text = year
+        } else {
+            cell.movieyear.text = "N/A"
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 155
+    }
+    
+     
 }
+    
+
+

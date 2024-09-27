@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct NowPlayingResponse : Codable {
-    var results : [NowPlaying]?
+struct EventResponse : Codable {
+    var results : [EventMovie]?
 }
 
-struct NowPlaying : Codable{
+struct EventMovie : Codable{
     var original_language : String?
     var title : String?
     var poster_path : String?
