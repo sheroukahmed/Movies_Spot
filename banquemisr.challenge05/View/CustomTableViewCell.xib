@@ -28,7 +28,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="204" id="Gdw-ts-jlK"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

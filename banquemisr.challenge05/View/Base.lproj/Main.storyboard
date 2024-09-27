@@ -100,11 +100,37 @@
                     <view key="view" contentMode="scaleToFill" id="mFK-ew-hn7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Km6-Zf-eFn">
+                                <rect key="frame" x="16" y="97" width="361" height="660"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="166" id="8tZ-mK-w3I">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="166"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8tZ-mK-w3I" id="VKw-lK-BQF">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="166"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="uFD-3U-Snl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uFD-3U-Snl" firstAttribute="trailing" secondItem="Km6-Zf-eFn" secondAttribute="trailing" constant="16" id="3cx-8o-Yn2"/>
+                            <constraint firstItem="Km6-Zf-eFn" firstAttribute="top" secondItem="uFD-3U-Snl" secondAttribute="top" constant="38" id="AAv-8e-p8D"/>
+                            <constraint firstItem="Km6-Zf-eFn" firstAttribute="leading" secondItem="uFD-3U-Snl" secondAttribute="leading" constant="16" id="RvS-8f-9sQ"/>
+                            <constraint firstItem="uFD-3U-Snl" firstAttribute="bottom" secondItem="Km6-Zf-eFn" secondAttribute="bottom" constant="12" id="W41-VA-tf6"/>
+                            <constraint firstItem="Km6-Zf-eFn" firstAttribute="centerX" secondItem="uFD-3U-Snl" secondAttribute="centerX" id="dKC-hB-vXw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Up Comming" image="upcoming" selectedImage="upcoming" id="B9e-2v-Ah7"/>
                     <navigationItem key="navigationItem" id="g8y-OP-and"/>
+                    <connections>
+                        <outlet property="moviestable" destination="Km6-Zf-eFn" id="vof-F5-Cho"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nT4-o6-37u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

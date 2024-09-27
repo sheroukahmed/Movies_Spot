@@ -49,6 +49,13 @@ class popularViewController: UIViewController ,UITableViewDelegate, UITableViewD
             cell.movieyear.text = "N/A"
         }
         
+        if let posterPath = popularVM?.moviesResult?[indexPath.row].poster_path {
+            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            cell.movieImg.loadImage(from: imageUrl, placeholder: UIImage(named: "placeholder"))
+        } else {
+            cell.movieImg.image = UIImage(named: "placeholder")
+        }
+        
         return cell
     }
     
