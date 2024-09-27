@@ -57,11 +57,37 @@
                     <view key="view" contentMode="scaleToFill" id="1oe-kX-FJv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ag3-lD-Kxr">
+                                <rect key="frame" x="16" y="97" width="361" height="660"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="151" id="ln0-gX-gON">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="151"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ln0-gX-gON" id="bwb-Go-eYF">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="151"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="MuX-lm-xfQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ag3-lD-Kxr" firstAttribute="centerX" secondItem="MuX-lm-xfQ" secondAttribute="centerX" id="Iup-dz-0dt"/>
+                            <constraint firstItem="MuX-lm-xfQ" firstAttribute="trailing" secondItem="ag3-lD-Kxr" secondAttribute="trailing" constant="16" id="KuT-Eu-iAv"/>
+                            <constraint firstItem="MuX-lm-xfQ" firstAttribute="bottom" secondItem="ag3-lD-Kxr" secondAttribute="bottom" constant="12" id="M1N-Bl-CWi"/>
+                            <constraint firstItem="ag3-lD-Kxr" firstAttribute="top" secondItem="MuX-lm-xfQ" secondAttribute="top" constant="38" id="hr2-Iv-02r"/>
+                            <constraint firstItem="ag3-lD-Kxr" firstAttribute="leading" secondItem="MuX-lm-xfQ" secondAttribute="leading" constant="16" id="vVL-82-h3l"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Popular" image="favorite" selectedImage="favorite" id="Vgg-bG-5ce"/>
                     <navigationItem key="navigationItem" id="wdg-9d-i2Y"/>
+                    <connections>
+                        <outlet property="moviestable" destination="ag3-lD-Kxr" id="z86-LQ-L2g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKF-Wp-FRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

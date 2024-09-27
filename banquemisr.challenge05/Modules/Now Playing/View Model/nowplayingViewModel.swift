@@ -12,7 +12,7 @@ class NowPlayingViewModel {
     var network : networkProtocol?
     var bindResultToViewController : (()->()) = {}
     
-    var moviesResult :[NowPlaying]? {
+    var moviesResult :[EventMovie]? {
         didSet{
             bindResultToViewController()
         }
@@ -25,7 +25,7 @@ class NowPlayingViewModel {
     
     
     func loadData (){
-        network?.fetch(url: APIManger.getFullURL(details: "now_playing") ?? "", type: NowPlayingResponse.self, completionHandler: { [weak self] result, error in
+        network?.fetch(url: APIManger.getFullURL(details: "now_playing") ?? "", type: EventResponse.self, completionHandler: { [weak self] result, error in
             
             guard let result = result else{
                print(error)
