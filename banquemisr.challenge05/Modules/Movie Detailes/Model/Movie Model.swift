@@ -16,6 +16,7 @@ struct Movies : Codable {
     var release_date : String?
     var runtime : Int?
     var vote_average : Double?
+    var backdrop_path: String?
 }
 
 struct Genres : Codable {

@@ -33,6 +33,7 @@
 		F85EDF792CA7187200B55FE0 /* ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF782CA7187200B55FE0 /* ImageExtention.swift */; };
 		F85EDF7B2CA72BF100B55FE0 /* DetailesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85EDF7A2CA72BF100B55FE0 /* DetailesStoryboard.storyboard */; };
 		F85EDF7E2CA740DE00B55FE0 /* Movie Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF7D2CA740DE00B55FE0 /* Movie Model.swift */; };
+		F85EDF802CA7A35900B55FE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF7F2CA7A35900B55FE0 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		F85EDF782CA7187200B55FE0 /* ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtention.swift; sourceTree = "<group>"; };
 		F85EDF7A2CA72BF100B55FE0 /* DetailesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailesStoryboard.storyboard; sourceTree = "<group>"; };
 		F85EDF7D2CA740DE00B55FE0 /* Movie Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie Model.swift"; sourceTree = "<group>"; };
+		F85EDF7F2CA7A35900B55FE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				F85EDF572CA5B83E00B55FE0 /* DB */,
+				F85EDF7F2CA7A35900B55FE0 /* CoreDataManager.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F85EDF542CA5B81600B55FE0 /* nowplayingViewModel.swift in Sources */,
 				F85EDF522CA5B7F700B55FE0 /* upcomingViewModel.swift in Sources */,
 				F85EDF632CA5B92000B55FE0 /* Network.swift in Sources */,
+				F85EDF802CA7A35900B55FE0 /* CoreDataManager.swift in Sources */,
 				F85EDF562CA5B82B00B55FE0 /* nowplayingViewController.swift in Sources */,
 				F85EDF612CA5B90F00B55FE0 /* APIManger.swift in Sources */,
 				F85EDF192CA5B01100B55FE0 /* banquemisr_challenge05.xcdatamodeld in Sources */,
