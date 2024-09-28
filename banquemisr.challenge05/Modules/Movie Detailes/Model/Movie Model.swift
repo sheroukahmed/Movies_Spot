@@ -8,6 +8,7 @@
 import Foundation
 
 struct Movies : Codable {
+    var id : Int?
     var genres : [Genres]?
     var original_language : String?
     var original_title : String?

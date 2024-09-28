@@ -1,5 +1,5 @@
 //
-//  upcomingViewModel.swift
+//  nowplayingViewModel.swift
 //  banquemisr.challenge05
 //
 //  Created by  sherouk ahmed  on 26/09/2024.
@@ -7,25 +7,27 @@
 
 import Foundation
 
-class UpComingViewModel {
+class TabBarViewModel {
     
-    var network : networkProtocol?
-    var bindResultToViewController : (()->()) = {}
+    var network: networkProtocol?
+    var bindResultToViewController: (() -> Void) = {}
+    var screenType : String?
+    var entityType : String?
     
-    var moviesResult :[EventMovie]? {
-        didSet{
+    var moviesResult: [EventMovie]? {
+        didSet {
             bindResultToViewController()
         }
     }
     
-    
-    init() {
+    init(screenType : String? , entityType : String? ) {
         self.network = Network()
+        self.screenType = screenType
+        self.entityType = entityType
     }
     
-    
     func loadData() {
-        network?.fetch(url: APIManger.getFullURL(details: "upcoming") ?? "", type: EventResponse.self, completionHandler: { [weak self] result, error in
+        network?.fetch(url: APIManger.getFullURL(details: screenType ?? "") ?? "", type: EventResponse.self, completionHandler: { [weak self] result, error in
             
             if let error = error {
                 print("Network error: \(error.localizedDescription)")
@@ -40,18 +42,18 @@ class UpComingViewModel {
             
             self?.moviesResult = result.results ?? []
             
-            CoreDataManager.shared.deleteAllMovies(EnityValue: "Upcoming")
+            CoreDataManager.shared.deleteAllMovies(EnityValue: self?.entityType ?? "")
             
             if let movies = result.results {
                 for movie in movies {
-                    CoreDataManager.shared.storeEvent(Event: movie, EnityValue: "Upcoming")
+                    CoreDataManager.shared.storeEvent(Event: movie, EnityValue: self?.entityType ?? "")
                 }
             }
         })
     }
     
     func loadDatafromCoreData() {
-        let storedMovies = CoreDataManager.shared.getEvent(EnityValue: "Upcoming")
+        let storedMovies = CoreDataManager.shared.getEvent(EnityValue: self.entityType ?? "")
         print("Loading \(storedMovies.count) movies from Core Data")
         
         self.moviesResult = []
