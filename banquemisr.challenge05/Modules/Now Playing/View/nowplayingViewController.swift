@@ -66,5 +66,18 @@ class nowplayingViewController: UIViewController , UITableViewDelegate, UITableV
         return 155
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailesStoryboard", bundle: nil)
+        let detailesVC = storyboard.instantiateViewController(identifier: "detailesVC") as! MovieDetailesViewController
+        
+        detailesVC.movieDetailesVM = movieDetailesViewModel(movieId: nowPlayingVM?.moviesResult?[indexPath.row].id)
+        
+        
+        detailesVC.modalPresentationStyle = .fullScreen
+        detailesVC.modalTransitionStyle = .crossDissolve
+       present(detailesVC, animated: true)
+    }
+    
 
 }

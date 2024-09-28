@@ -67,6 +67,18 @@ class upcomingViewController: UIViewController ,UITableViewDelegate, UITableView
         return 155
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailesStoryboard", bundle: nil)
+        let detailesVC = storyboard.instantiateViewController(identifier: "detailesVC") as! MovieDetailesViewController
+        
+        detailesVC.movieDetailesVM = movieDetailesViewModel(movieId: upcomingVM?.moviesResult?[indexPath.row].id)
+        
+        
+        detailesVC.modalPresentationStyle = .fullScreen
+        detailesVC.modalTransitionStyle = .crossDissolve
+       present(detailesVC, animated: true)
+    }
+    
 
    
 }

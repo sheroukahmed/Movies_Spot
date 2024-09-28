@@ -63,6 +63,18 @@ class popularViewController: UIViewController ,UITableViewDelegate, UITableViewD
         return 155
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetailesStoryboard", bundle: nil)
+        let detailesVC = storyboard.instantiateViewController(identifier: "detailesVC") as! MovieDetailesViewController
+        
+        detailesVC.movieDetailesVM = movieDetailesViewModel(movieId: popularVM?.moviesResult?[indexPath.row].id)
+        
+        
+        detailesVC.modalPresentationStyle = .fullScreen
+        detailesVC.modalTransitionStyle = .crossDissolve
+       present(detailesVC, animated: true)
+    }
+    
      
 }
     
