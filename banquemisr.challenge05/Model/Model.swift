@@ -12,6 +12,7 @@ struct EventResponse : Codable {
 }
 
 struct EventMovie : Codable{
+    var id : Int?
     var original_language : String?
     var title : String?
     var poster_path : String?
