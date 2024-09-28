@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Network
 
 class nowplayingViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
    
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
 
     
     @IBOutlet weak var moviestable: UITableView!
@@ -16,23 +19,37 @@ class nowplayingViewController: UIViewController , UITableViewDelegate, UITableV
     var nowPlayingVM : NowPlayingViewModel?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+           super.viewDidLoad()
+           
+           nowPlayingVM = NowPlayingViewModel()
+           
+           nowPlayingVM?.bindResultToViewController = {
+               DispatchQueue.main.async {
+                   print("Reloading table view with \(self.nowPlayingVM?.moviesResult?.count ?? 0) movies")
+                   self.moviestable.reloadData()
+               }
+           }
         
-        nowPlayingVM = NowPlayingViewModel()
-        
-        moviestable.dataSource = self
-        moviestable.delegate = self
-        
-        let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-        moviestable.register(nib, forCellReuseIdentifier: "moviecell")
-        
-        nowPlayingVM?.loadData()
-        nowPlayingVM?.bindResultToViewController = {
-            
-        }
-
-       
-    }
+           monitor.pathUpdateHandler = { path in
+               self.isConnected = (path.status == .satisfied)
+               DispatchQueue.main.async {
+                   if self.isConnected {
+                       self.nowPlayingVM?.loadData()
+                   } else {
+                       self.nowPlayingVM?.loadDatafromCoreData()
+                   }
+               }
+           }
+           
+           let queue = DispatchQueue(label: "NetworkMonitor")
+           monitor.start(queue: queue)
+           
+           moviestable.dataSource = self
+           moviestable.delegate = self
+           
+           let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+           moviestable.register(nib, forCellReuseIdentifier: "moviecell")
+       }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

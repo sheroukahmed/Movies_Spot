@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Network
 
 class popularViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
+    
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
 
     @IBOutlet weak var moviestable: UITableView!
     
@@ -18,16 +22,35 @@ class popularViewController: UIViewController ,UITableViewDelegate, UITableViewD
         
         popularVM = PopularViewModel()
         
+        popularVM?.bindResultToViewController = {
+            DispatchQueue.main.async {
+                print("Reloading table view with \(self.popularVM?.moviesResult?.count ?? 0) movies")
+                self.moviestable.reloadData()
+            }
+        }
+     
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
+            DispatchQueue.main.async {
+                if self.isConnected {
+                    self.popularVM?.loadData()
+                } else {
+                    self.popularVM?.loadDatafromCoreData()
+                }
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+        
+        
+        
         moviestable.dataSource = self
         moviestable.delegate = self
         
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         moviestable.register(nib, forCellReuseIdentifier: "moviecell")
         
-        popularVM?.loadData()
-        popularVM?.bindResultToViewController = {
-            
-        }
     }
     
     

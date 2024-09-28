@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Network
+
 
 class upcomingViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
 
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
     
     @IBOutlet weak var moviestable: UITableView!
     
@@ -19,17 +23,32 @@ class upcomingViewController: UIViewController ,UITableViewDelegate, UITableView
         
         upcomingVM = UpComingViewModel()
         
+        upcomingVM?.bindResultToViewController = {
+            DispatchQueue.main.async {
+                print("Reloading table view with \(self.upcomingVM?.moviesResult?.count ?? 0) movies")
+                self.moviestable.reloadData()
+            }
+        }
+     
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
+            DispatchQueue.main.async {
+                if self.isConnected {
+                    self.upcomingVM?.loadData()
+                } else {
+                    self.upcomingVM?.loadDatafromCoreData()
+                }
+            }
+        }
+        
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+        
         moviestable.dataSource = self
         moviestable.delegate = self
         
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         moviestable.register(nib, forCellReuseIdentifier: "moviecell")
-        
-        upcomingVM?.loadData()
-        upcomingVM?.bindResultToViewController = {
-            
-        }
-
         
     }
     
