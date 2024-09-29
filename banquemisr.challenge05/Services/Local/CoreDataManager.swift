@@ -47,11 +47,65 @@ class CoreDataManager {
         }
     }
     
+    
+    func storeMovie(currentMovie: Movies) {
+        guard let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context) else { return }
+        let movie = NSManagedObject(entity: entity, insertInto: context)
+        
+        // Set basic movie properties
+        movie.setValue(currentMovie.id, forKey: "id")
+        movie.setValue(currentMovie.backdrop_path, forKey: "backdrop_path")
+        movie.setValue(currentMovie.original_language, forKey: "original_language")
+        movie.setValue(currentMovie.overview, forKey: "overview")
+        movie.setValue(currentMovie.poster_path, forKey: "poster_path")
+        movie.setValue(currentMovie.release_date, forKey: "release_date")
+        movie.setValue(currentMovie.original_title, forKey: "original_title")
+        movie.setValue(currentMovie.vote_average, forKey: "vote_average")
+        movie.setValue(currentMovie.runtime, forKey: "runtime")
+        
+        // Convert genres array to a comma-separated string
+        let genreNames = currentMovie.genres?.compactMap { $0.name }.joined(separator: ", ") ?? ""
+        movie.setValue(genreNames, forKey: "genres") // Store genres as a string
+        
+        do {
+            try context.save()
+            print("Movie saved successfully!")
+        } catch let error {
+            print("Failed to save movie!")
+            print(error.localizedDescription)
+        }
+    }
+
+    
+    
+    
+    
     func getEvent(EnityValue: String, completion: @escaping ([NSManagedObject]?) -> Void) {
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EnityValue)
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.propertiesToFetch = ["id", "backdrop_path", "original_language", "overview", "poster_path", "release_date", "title", "vote_average"]
+        
+        do {
+            let storedMovies = try context.fetch(fetchRequest)
+            if storedMovies.isEmpty {
+                print("No data found in Core Data")
+            }
+            completion(storedMovies)
+        } catch let error {
+            print("Failed to fetch data from Core Data")
+            print(error.localizedDescription)
+            completion(nil)
+        }
+        
+    }
+    
+    
+    func getMovie(completion: @escaping ([NSManagedObject]?) -> Void) {
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.propertiesToFetch = ["id", "backdrop_path", "original_language", "overview", "poster_path", "release_date", "original_title", "vote_average", "runtime", "genres"]
         
         do {
             let storedMovies = try context.fetch(fetchRequest)
