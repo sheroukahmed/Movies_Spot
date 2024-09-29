@@ -78,6 +78,11 @@ class MovieDetailesViewController: UIViewController {
             }
         }
         
+        movieDetailesVM?.showErrorToViewController = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: errorMessage)
+            }
+        }
         
         monitor.pathUpdateHandler = { path in
             self.isConnected = (path.status == .satisfied)
@@ -98,6 +103,12 @@ class MovieDetailesViewController: UIViewController {
     
     @IBAction func backBtn(_ sender: Any) {
         dismiss(animated: true)
+    }
+   
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Sorry", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
