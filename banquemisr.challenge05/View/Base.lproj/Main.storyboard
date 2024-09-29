@@ -11,7 +11,7 @@
         <!--Movie List View Controller-->
         <scene sceneID="3AO-qR-P6Y">
             <objects>
-                <viewController id="S3l-35-dft" customClass="MovieListViewController" customModule="banquemisr_challenge05" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieListViewController" id="S3l-35-dft" customClass="MovieListViewController" customModule="banquemisr_challenge05" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uok-Qm-S3A">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

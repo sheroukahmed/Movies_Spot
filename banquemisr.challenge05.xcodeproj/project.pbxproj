@@ -30,6 +30,15 @@
 		F85EDF7B2CA72BF100B55FE0 /* DetailesStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F85EDF7A2CA72BF100B55FE0 /* DetailesStoryboard.storyboard */; };
 		F85EDF7E2CA740DE00B55FE0 /* Movie Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF7D2CA740DE00B55FE0 /* Movie Model.swift */; };
 		F85EDF802CA7A35900B55FE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF7F2CA7A35900B55FE0 /* CoreDataManager.swift */; };
+		F85EDF882CA911A100B55FE0 /* APIMangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF872CA911A100B55FE0 /* APIMangerTests.swift */; };
+		F85EDF8B2CA9138C00B55FE0 /* ExtentionTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF8A2CA9138C00B55FE0 /* ExtentionTesting.swift */; };
+		F85EDF8D2CA9160D00B55FE0 /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF8C2CA9160D00B55FE0 /* MockNetwork.swift */; };
+		F85EDF8F2CA9166400B55FE0 /* NetworkTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EDF8E2CA9166400B55FE0 /* NetworkTesting.swift */; };
+		F8B560042CA91B8900EF5D40 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B560032CA91B8900EF5D40 /* MockCoreData.swift */; };
+		F8B560062CA91BCB00EF5D40 /* CoreDataTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B560052CA91BCB00EF5D40 /* CoreDataTesting.swift */; };
+		F8B560092CA927A700EF5D40 /* TabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B560082CA927A700EF5D40 /* TabBarViewModelTests.swift */; };
+		F8B5600B2CA9961A00EF5D40 /* MovieListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B5600A2CA9961A00EF5D40 /* MovieListViewControllerTests.swift */; };
+		F8B5600E2CA9991100EF5D40 /* MovieDetailesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B5600D2CA9991100EF5D40 /* MovieDetailesViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +86,17 @@
 		F85EDF7A2CA72BF100B55FE0 /* DetailesStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailesStoryboard.storyboard; sourceTree = "<group>"; };
 		F85EDF7D2CA740DE00B55FE0 /* Movie Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie Model.swift"; sourceTree = "<group>"; };
 		F85EDF7F2CA7A35900B55FE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F85EDF872CA911A100B55FE0 /* APIMangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMangerTests.swift; sourceTree = "<group>"; };
+		F85EDF8A2CA9138C00B55FE0 /* ExtentionTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtentionTesting.swift; sourceTree = "<group>"; };
+		F85EDF8C2CA9160D00B55FE0 /* MockNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
+		F85EDF8E2CA9166400B55FE0 /* NetworkTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTesting.swift; sourceTree = "<group>"; };
+		F85EDF902CA917AD00B55FE0 /* banquemisr.challenge05.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = banquemisr.challenge05.xctestplan; sourceTree = "<group>"; };
+		F85EDF912CA917C100B55FE0 /* banquemisr.challenge05.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = banquemisr.challenge05.xctestplan; sourceTree = "<group>"; };
+		F8B560032CA91B8900EF5D40 /* MockCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
+		F8B560052CA91BCB00EF5D40 /* CoreDataTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTesting.swift; sourceTree = "<group>"; };
+		F8B560082CA927A700EF5D40 /* TabBarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModelTests.swift; sourceTree = "<group>"; };
+		F8B5600A2CA9961A00EF5D40 /* MovieListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerTests.swift; sourceTree = "<group>"; };
+		F8B5600D2CA9991100EF5D40 /* MovieDetailesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailesViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +127,8 @@
 		F85EDF022CA5B01100B55FE0 = {
 			isa = PBXGroup;
 			children = (
+				F85EDF912CA917C100B55FE0 /* banquemisr.challenge05.xctestplan */,
+				F85EDF902CA917AD00B55FE0 /* banquemisr.challenge05.xctestplan */,
 				F85EDF0D2CA5B01100B55FE0 /* banquemisr.challenge05 */,
 				F85EDF272CA5B01300B55FE0 /* banquemisr.challenge05Tests */,
 				F85EDF312CA5B01300B55FE0 /* banquemisr.challenge05UITests */,
@@ -143,6 +165,12 @@
 		F85EDF272CA5B01300B55FE0 /* banquemisr.challenge05Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F8B5600C2CA998BB00EF5D40 /* Movie Detailes Testing */,
+				F8B560072CA9272B00EF5D40 /* Tab Bar Testing */,
+				F8B560022CA91B1F00EF5D40 /* CoreData Testing */,
+				F85EDF892CA9131200B55FE0 /* Image Extention Testing */,
+				F85EDF862CA9117000B55FE0 /* API Manger Testing */,
+				F85EDF812CA9101400B55FE0 /* Network Testing */,
 				F85EDF282CA5B01300B55FE0 /* banquemisr_challenge05Tests.swift */,
 			);
 			path = banquemisr.challenge05Tests;
@@ -305,6 +333,57 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F85EDF812CA9101400B55FE0 /* Network Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F85EDF8C2CA9160D00B55FE0 /* MockNetwork.swift */,
+				F85EDF8E2CA9166400B55FE0 /* NetworkTesting.swift */,
+			);
+			path = "Network Testing";
+			sourceTree = "<group>";
+		};
+		F85EDF862CA9117000B55FE0 /* API Manger Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F85EDF872CA911A100B55FE0 /* APIMangerTests.swift */,
+			);
+			path = "API Manger Testing";
+			sourceTree = "<group>";
+		};
+		F85EDF892CA9131200B55FE0 /* Image Extention Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F85EDF8A2CA9138C00B55FE0 /* ExtentionTesting.swift */,
+			);
+			path = "Image Extention Testing";
+			sourceTree = "<group>";
+		};
+		F8B560022CA91B1F00EF5D40 /* CoreData Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F8B560032CA91B8900EF5D40 /* MockCoreData.swift */,
+				F8B560052CA91BCB00EF5D40 /* CoreDataTesting.swift */,
+			);
+			path = "CoreData Testing";
+			sourceTree = "<group>";
+		};
+		F8B560072CA9272B00EF5D40 /* Tab Bar Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F8B560082CA927A700EF5D40 /* TabBarViewModelTests.swift */,
+				F8B5600A2CA9961A00EF5D40 /* MovieListViewControllerTests.swift */,
+			);
+			path = "Tab Bar Testing";
+			sourceTree = "<group>";
+		};
+		F8B5600C2CA998BB00EF5D40 /* Movie Detailes Testing */ = {
+			isa = PBXGroup;
+			children = (
+				F8B5600D2CA9991100EF5D40 /* MovieDetailesViewControllerTests.swift */,
+			);
+			path = "Movie Detailes Testing";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,6 +539,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B560092CA927A700EF5D40 /* TabBarViewModelTests.swift in Sources */,
+				F8B5600B2CA9961A00EF5D40 /* MovieListViewControllerTests.swift in Sources */,
+				F8B560042CA91B8900EF5D40 /* MockCoreData.swift in Sources */,
+				F85EDF8D2CA9160D00B55FE0 /* MockNetwork.swift in Sources */,
+				F8B560062CA91BCB00EF5D40 /* CoreDataTesting.swift in Sources */,
+				F85EDF8B2CA9138C00B55FE0 /* ExtentionTesting.swift in Sources */,
+				F8B5600E2CA9991100EF5D40 /* MovieDetailesViewControllerTests.swift in Sources */,
+				F85EDF8F2CA9166400B55FE0 /* NetworkTesting.swift in Sources */,
+				F85EDF882CA911A100B55FE0 /* APIMangerTests.swift in Sources */,
 				F85EDF292CA5B01300B55FE0 /* banquemisr_challenge05Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

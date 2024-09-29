@@ -44,7 +44,7 @@ class TabBarViewModel {
             
             print("Fetched \(result.results?.count ?? 0) movies from the API")
             self?.moviesResult = result.results ?? []
-            
+            self?.bindResultToViewController()
             DispatchQueue.main.async {
                 CoreDataManager.shared.deleteAllMovies(EnityValue: self?.entityType ?? "")
             }

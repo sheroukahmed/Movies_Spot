@@ -13,16 +13,24 @@ import CoreData
 class CoreDataManager {
     
     static let shared = CoreDataManager()
-    
-    private init() {}
-    
-    private var appDelegate: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
-    
-    private var context: NSManagedObjectContext {
-        return appDelegate.persistentContainer.viewContext
-    }
+        
+        private init() {}
+        
+        private var appDelegate: AppDelegate {
+            return UIApplication.shared.delegate as! AppDelegate
+        }
+        
+        private var privateContext: NSManagedObjectContext? // Private variable for context
+        
+        var context: NSManagedObjectContext {
+            return privateContext ?? appDelegate.persistentContainer.viewContext // Use private context if set
+        }
+
+       
+        func setContext(_ context: NSManagedObjectContext) {
+            self.privateContext = context
+        }
+
     
     func storeEvent(Event: EventMovie, EnityValue: String) {
        
