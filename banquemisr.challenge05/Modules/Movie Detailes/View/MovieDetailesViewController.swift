@@ -36,9 +36,28 @@ class MovieDetailesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieDetailesVM?.bindResultToViewController = { [weak self] in
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
             DispatchQueue.main.async {
-                guard let self = self else { return }
+                if self.isConnected {
+                    self.movieDetailesVM?.loadData()
+                } else {
+                    self.movieDetailesVM?.loadDatafromCoreData()
+                }
+            }
+        }
+
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+        
+        movieDetailesVM?.bindResultToViewController = { [weak self] in
+            guard let self = self, let movie = self.movieDetailesVM?.moviesResult else {
+                    print("No movie data")
+                    return
+                }
+            
+            DispatchQueue.main.async {
+                
                 
                 if let posterPath = self.movieDetailesVM?.moviesResult?.poster_path {
                     let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
@@ -84,19 +103,7 @@ class MovieDetailesViewController: UIViewController {
             }
         }
         
-        monitor.pathUpdateHandler = { path in
-            self.isConnected = (path.status == .satisfied)
-            DispatchQueue.main.async {
-                if self.isConnected {
-                    self.movieDetailesVM?.loadData()
-                } else {
-                    self.movieDetailesVM?.loadDatafromCoreData()
-                }
-            }
-        }
-
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        monitor.start(queue: queue)
+        
     }
     
     
