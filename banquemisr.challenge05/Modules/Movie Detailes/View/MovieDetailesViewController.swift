@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Network
 
 class MovieDetailesViewController: UIViewController {
+    
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
+
     
     @IBOutlet weak var movieImg: UIImageView!
     
@@ -30,8 +35,6 @@ class MovieDetailesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        movieDetailesVM?.loadData()
         
         movieDetailesVM?.bindResultToViewController = { [weak self] in
             DispatchQueue.main.async {
@@ -74,6 +77,21 @@ class MovieDetailesViewController: UIViewController {
                 self.releaseDate.text = self.movieDetailesVM?.moviesResult?.release_date ?? "N/A"
             }
         }
+        
+        
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
+            DispatchQueue.main.async {
+                if self.isConnected {
+                    self.movieDetailesVM?.loadData()
+                } else {
+                    self.movieDetailesVM?.loadDatafromCoreData()
+                }
+            }
+        }
+
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
     }
     
     

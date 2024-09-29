@@ -66,7 +66,7 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
                        self.viewModel?.loadData()
                    } else {
                        self.viewModel?.loadDatafromCoreData()
-                       //self.viewModel?.loadData()
+                      
                    }
                }
            }
@@ -113,10 +113,10 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "DetailesStoryboard", bundle: nil)
         let detailesVC = storyboard.instantiateViewController(identifier: "detailesVC") as! MovieDetailesViewController
+        
 
         detailesVC.movieDetailesVM = movieDetailesViewModel(movieId: viewModel?.moviesResult?[indexPath.row].id)
-
-
+        
         detailesVC.modalPresentationStyle = .fullScreen
         detailesVC.modalTransitionStyle = .crossDissolve
        present(detailesVC, animated: true)

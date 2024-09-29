@@ -71,6 +71,7 @@ class TabBarViewModel {
             
             for movieData in storedMovies {
                 var movie = EventMovie()
+                movie.id = movieData.value(forKey: "id") as? Int
                 movie.backdrop_path = movieData.value(forKey: "backdrop_path") as? String
                 movie.original_language = movieData.value(forKey: "original_language") as? String
                 movie.overview = movieData.value(forKey: "overview") as? String
