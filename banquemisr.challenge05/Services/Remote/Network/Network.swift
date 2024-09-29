@@ -7,19 +7,25 @@
 
 import Foundation
 
-class Network : networkProtocol {
+class Network: networkProtocol {
+    private var session: URLSession
     
-    func fetch<T: Codable>(url: String, type: T.Type, completionHandler: @escaping (T?, Error?) -> Void){
-        let url = URL(string:url)
+    init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
+
+    func fetch<T: Codable>(url: String, type: T.Type, completionHandler: @escaping (T?, Error?) -> Void) {
+        let url = URL(string: url)
         guard let newURL = url else {
             print("Invalid URL")
-            return  }
+            return
+        }
         print("Fetching data from URL: \(newURL)")
         
         var components = URLComponents(url: newURL, resolvingAgainstBaseURL: true)!
         let queryItems: [URLQueryItem] = [
-          URLQueryItem(name: "language", value: "en-US"),
-          URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "language", value: "en-US"),
+            URLQueryItem(name: "page", value: "1"),
         ]
         components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
 
@@ -27,12 +33,11 @@ class Network : networkProtocol {
         request.httpMethod = "GET"
         request.timeoutInterval = 2
         request.allHTTPHeaderFields = [
-          "accept": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODU0OGFkODE4ZDFlOTRiMjYxYjUzMzZjMjI2YmI4YyIsIm5iZiI6MTcyNzM2MjgwOC43MDcyNSwic3ViIjoiNjZmNTY5NzI1ZTM1NGM1MDEyNzQwMmFmIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.dSWX3HgnJePebISPwI5iaNR22lXuaGBoJ5VLmzUW8W8"
+            "accept": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODU0OGFkODE4ZDFlOTRiMjYxYjUzMzZjMjI2YmI4YyIsIm5iZiI6MTcyNzM2MjgwOC43MDcyNSwic3ViIjoiNjZmNTY5NzI1ZTM1NGM1MDEyNzQwMmFmIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.dSWX3HgnJePebISPwI5iaNR22lXuaGBoJ5VLmzUW8W8"
         ]
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-                
+        session.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("error: \(error.localizedDescription)")
                 completionHandler(nil, error)
@@ -45,7 +50,6 @@ class Network : networkProtocol {
                 return
             }
             
-            
             do {
                 let decodedData = try JSONDecoder().decode(T.self, from: data)
                 completionHandler(decodedData, nil)
@@ -53,7 +57,5 @@ class Network : networkProtocol {
                 print(error.localizedDescription)
             }
         }.resume()
-
-        
     }
 }

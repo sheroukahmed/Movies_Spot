@@ -8,17 +8,16 @@
 import UIKit
 import Network
 
-class MovieListViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class MovieListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let monitor = NWPathMonitor()
     var isConnected: Bool = false
 
     @IBOutlet weak var moviestable: UITableView!
-
-    var viewModel : TabBarViewModel?
+    var viewModel: TabBarViewModel?
 
     override func viewDidLoad() {
-           super.viewDidLoad()
+        super.viewDidLoad()
 
         moviestable.dataSource = self
         moviestable.delegate = self
@@ -26,6 +25,37 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
         let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         moviestable.register(nib, forCellReuseIdentifier: "moviecell")
 
+        setupTabBar()
+
+        viewModel?.bindResultToViewController = {
+            DispatchQueue.main.async {
+                print("Reloading table view with \(self.viewModel?.moviesResult?.count ?? 0) movies")
+                self.moviestable.reloadData()
+            }
+        }
+
+        viewModel?.showErrorToViewController = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: errorMessage)
+            }
+        }
+
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
+            DispatchQueue.main.async {
+                if self.isConnected {
+                    self.viewModel?.loadData()
+                } else {
+                    self.viewModel?.loadDatafromCoreData()
+                }
+            }
+        }
+
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+
+    func setupTabBar() {
         self.tabBarController?.tabBar.items?[0].title = "Now Playing"
         self.tabBarController?.tabBar.items?[0].selectedImage = UIImage(named: "tv")
         self.tabBarController?.tabBar.items?[0].image = UIImage(named: "tv")
@@ -34,11 +64,9 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
         self.tabBarController?.tabBar.items?[1].selectedImage = UIImage(named: "favorite")
         self.tabBarController?.tabBar.items?[1].image = UIImage(named: "favorite")
 
-
         self.tabBarController?.tabBar.items?[2].title = "UpComing"
         self.tabBarController?.tabBar.items?[2].selectedImage = UIImage(named: "upcoming")
         self.tabBarController?.tabBar.items?[2].image = UIImage(named: "upcoming")
-
 
         switch self.tabBarController?.tabBar.selectedItem?.title {
         case "Now Playing":
@@ -49,54 +77,38 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
             viewModel = TabBarViewModel(screenType: "upcoming", entityType: "Upcoming")
         default:
             viewModel = TabBarViewModel(screenType: "upcoming", entityType: "Upcoming")
-
         }
+    }
 
-           viewModel?.bindResultToViewController = {
-               DispatchQueue.main.async {
-                   print("Reloading table view with \(self.viewModel?.moviesResult?.count ?? 0) movies")
-                   self.moviestable.reloadData()
-               }
-           }
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
 
-           monitor.pathUpdateHandler = { path in
-               self.isConnected = (path.status == .satisfied)
-               DispatchQueue.main.async {
-                   if self.isConnected {
-                       self.viewModel?.loadData()
-                   } else {
-                       self.viewModel?.loadDatafromCoreData()
-                       //self.viewModel?.loadData()
-                   }
-               }
-           }
-
-           let queue = DispatchQueue(label: "NetworkMonitor")
-           monitor.start(queue: queue)
-
-
-       }
-
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.moviesResult?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = moviestable.dequeueReusableCell(withIdentifier: "moviecell", for: indexPath) as? CustomTableViewCell else {
-                    return UITableViewCell()
-                }
+            return UITableViewCell()
+        }
 
-        cell.movietitle.text = viewModel?.moviesResult?[indexPath.row].title
-        cell.movielang.text = viewModel?.moviesResult?[indexPath.row].original_language
-        if let releaseDate = viewModel?.moviesResult?[indexPath.row].release_date {
+        let movie = viewModel?.moviesResult?[indexPath.row]
+        cell.movietitle.text = movie?.title
+        cell.movielang.text = movie?.original_language
+
+        if let releaseDate = movie?.release_date {
             let year = String(releaseDate.prefix(4))
             cell.movieyear.text = year
         } else {
             cell.movieyear.text = "N/A"
         }
 
-        if let posterPath = viewModel?.moviesResult?[indexPath.row].poster_path {
+        if let posterPath = movie?.poster_path {
             let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
             cell.movieImg.loadImage(from: imageUrl, placeholder: UIImage(named: "placeholder"))
         } else {
@@ -105,10 +117,10 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
 
         return cell
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155
     }
-
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "DetailesStoryboard", bundle: nil)
@@ -116,11 +128,8 @@ class MovieListViewController: UIViewController , UITableViewDelegate, UITableVi
 
         detailesVC.movieDetailesVM = movieDetailesViewModel(movieId: viewModel?.moviesResult?[indexPath.row].id)
 
-
         detailesVC.modalPresentationStyle = .fullScreen
         detailesVC.modalTransitionStyle = .crossDissolve
-       present(detailesVC, animated: true)
+        present(detailesVC, animated: true)
     }
-
-
 }

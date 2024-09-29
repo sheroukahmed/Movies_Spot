@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Network
 
 class MovieDetailesViewController: UIViewController {
+    
+    let monitor = NWPathMonitor()
+    var isConnected: Bool = false
+
     
     @IBOutlet weak var movieImg: UIImageView!
     
@@ -31,11 +36,28 @@ class MovieDetailesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieDetailesVM?.loadData()
+        monitor.pathUpdateHandler = { path in
+            self.isConnected = (path.status == .satisfied)
+            DispatchQueue.main.async {
+                if self.isConnected {
+                    self.movieDetailesVM?.loadData()
+                } else {
+                    self.movieDetailesVM?.loadDatafromCoreData()
+                }
+            }
+        }
+
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
         
         movieDetailesVM?.bindResultToViewController = { [weak self] in
+            guard let self = self, let movie = self.movieDetailesVM?.moviesResult else {
+                    print("No movie data")
+                    return
+                }
+            
             DispatchQueue.main.async {
-                guard let self = self else { return }
+                
                 
                 if let posterPath = self.movieDetailesVM?.moviesResult?.poster_path {
                     let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
@@ -74,12 +96,26 @@ class MovieDetailesViewController: UIViewController {
                 self.releaseDate.text = self.movieDetailesVM?.moviesResult?.release_date ?? "N/A"
             }
         }
+        
+        movieDetailesVM?.showErrorToViewController = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showErrorAlert(message: errorMessage)
+            }
+        }
+        
+        
     }
     
     
     
     @IBAction func backBtn(_ sender: Any) {
         dismiss(animated: true)
+    }
+   
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Sorry", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
