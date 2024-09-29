@@ -25,7 +25,7 @@ class Network : networkProtocol {
 
         var request = URLRequest(url: components.url!)
         request.httpMethod = "GET"
-        request.timeoutInterval = 10
+        request.timeoutInterval = 2
         request.allHTTPHeaderFields = [
           "accept": "application/json",
           "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODU0OGFkODE4ZDFlOTRiMjYxYjUzMzZjMjI2YmI4YyIsIm5iZiI6MTcyNzM2MjgwOC43MDcyNSwic3ViIjoiNjZmNTY5NzI1ZTM1NGM1MDEyNzQwMmFmIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.dSWX3HgnJePebISPwI5iaNR22lXuaGBoJ5VLmzUW8W8"

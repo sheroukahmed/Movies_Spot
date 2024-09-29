@@ -41,37 +41,50 @@ class TabBarViewModel {
             print("Fetched \(result.results?.count ?? 0) movies from the API")
             
             self?.moviesResult = result.results ?? []
-            
-            CoreDataManager.shared.deleteAllMovies(EnityValue: self?.entityType ?? "")
+            DispatchQueue.main.async {
+                CoreDataManager.shared.deleteAllMovies(EnityValue: self?.entityType ?? "")
+            }
+           
             
             if let movies = result.results {
                 for movie in movies {
-                    CoreDataManager.shared.storeEvent(Event: movie, EnityValue: self?.entityType ?? "")
+                    DispatchQueue.main.async {
+                        CoreDataManager.shared.storeEvent(Event: movie, EnityValue: self?.entityType ?? "")
+                        
+                    }
                 }
             }
         })
     }
     
+    
+    
     func loadDatafromCoreData() {
-        let storedMovies = CoreDataManager.shared.getEvent(EnityValue: self.entityType ?? "")
-        print("Loading \(storedMovies.count) movies from Core Data")
-        
-        self.moviesResult = []
-        
-        for movieData in storedMovies {
-            var movie = EventMovie()
-            movie.backdrop_path = movieData.value(forKey: "backdrop_path") as? String
-            movie.original_language = movieData.value(forKey: "original_language") as? String
-            movie.overview = movieData.value(forKey: "overview") as? String
-            movie.poster_path = movieData.value(forKey: "poster_path") as? String
-            movie.release_date = movieData.value(forKey: "release_date") as? String
-            movie.title = movieData.value(forKey: "title") as? String
-            movie.vote_average = movieData.value(forKey: "vote_average") as? Double
+        CoreDataManager.shared.getEvent(EnityValue: self.entityType ?? "") { storedMovies in
+            guard let storedMovies = storedMovies else {
+                print("Failed to fetch movies from Core Data")
+                return
+            }
 
-            self.moviesResult?.append(movie)
+            print("Loading \(storedMovies.count) movies from Core Data")
+            self.moviesResult = []
+            
+            for movieData in storedMovies {
+                var movie = EventMovie()
+                movie.backdrop_path = movieData.value(forKey: "backdrop_path") as? String
+                movie.original_language = movieData.value(forKey: "original_language") as? String
+                movie.overview = movieData.value(forKey: "overview") as? String
+                movie.poster_path = movieData.value(forKey: "poster_path") as? String
+                movie.release_date = movieData.value(forKey: "release_date") as? String
+                movie.title = movieData.value(forKey: "title") as? String
+                movie.vote_average = movieData.value(forKey: "vote_average") as? Double
+
+                self.moviesResult?.append(movie)
+            }
+            
+            print("Movies loaded into view model: \(self.moviesResult?.count ?? 0)")
+            self.bindResultToViewController()
         }
-        
-        print("Movies loaded into view model: \(self.moviesResult?.count ?? 0)")
-        self.bindResultToViewController()
     }
+
 }
